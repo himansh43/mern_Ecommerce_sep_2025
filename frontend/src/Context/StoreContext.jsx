@@ -72,18 +72,18 @@ export const StoreContextProvider = ({ children }) => {
     }
   };
 
-  // const removeFromCart = (productItem, sizes) => {
-  //   try {
-  //     let cartItem = structuredClone(cartData);
-  //     if (cartItem[productItem]) {
-  //       if (cartItem[productItem][sizes] > 0) {
-  //         cartItem[productItem][sizes] -= 1;
-  //       } else {
-  //         cartItem[productItem][sizes] = 1;
-  //       }
-  //     }
-  //   } catch (error) {}
-  // };
+  const removeFromCart = (productItem, sizes) => {
+    try {
+      let cartItem = structuredClone(cartData);
+      if (cartItem[productItem]) {
+        if (cartItem[productItem][sizes] > 0) {
+          cartItem[productItem][sizes] -= 1;
+        } else {
+          cartItem[productItem][sizes] = 1;
+        }
+      }
+    } catch (error) {}
+  };
 
   //Done
   const getUserCart = async () => {

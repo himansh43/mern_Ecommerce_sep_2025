@@ -18,6 +18,7 @@ import Verify from './Pages/Verify'
 const App = () => {
   const {token}= useStoreContext()
   
+  
   return (
     <div className='w-[90%] m-auto'>
       <NavBar/>
