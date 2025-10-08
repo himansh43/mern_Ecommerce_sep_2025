@@ -16,7 +16,7 @@ export const StoreContextProvider = ({ children }) => {
   const [userName, setUserName] = useState(
     JSON.parse(localStorage.getItem("user-name")) || ""
   );
-  const backend_url = import.meta.env.VITE_BACKEND_URL;
+  const backend_url = "https://mern-ecommerce-sep-api.vercel.app";
   const navigate = useNavigate();
   const delivery_fee = 10;
 
@@ -217,6 +217,7 @@ export const StoreContextProvider = ({ children }) => {
     delivery_fee,
     userName,
     setUserName,
+    backend_url
   };
   return (
     <StoreContext.Provider value={value}>{children}</StoreContext.Provider>

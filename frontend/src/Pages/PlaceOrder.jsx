@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 const PlaceOrder = () => {
   const [method, setMethod] = useState("cod");
   const navigate = useNavigate();
-  const backend_url= import.meta.env.VITE_BACKEND_URL
+
   const {
     delivery_fee,
     getCartAmount,
@@ -16,6 +16,7 @@ const PlaceOrder = () => {
     cartData,
     setCartData,
     products,
+    backend_url
   } = useStoreContext();
   const [inputs, setInputs] = useState({
     firstName: "",

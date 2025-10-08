@@ -5,9 +5,8 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 const Orders = () => {
-  const { products, token } = useStoreContext();
+  const { products, token,backend_url } = useStoreContext();
   const [orders, setOrders] = useState([]);
-  const backend_url = import.meta.env.VITE_BACKEND_URL;
   const fetchUserOrders = async () => {
     try {
       if (!token) {

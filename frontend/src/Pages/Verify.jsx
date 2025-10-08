@@ -11,8 +11,7 @@ const Verify = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const success = searchParams.get("success");
   const orderId = searchParams.get("orderId");
-  const backend_url = import.meta.env.VITE_BACKEND_URL;
-  const { token, setCartData } = useStoreContext();
+  const { token, setCartData,backend_url } = useStoreContext();
   const navigate = useNavigate();
 
   const verifyPayment = async () => {

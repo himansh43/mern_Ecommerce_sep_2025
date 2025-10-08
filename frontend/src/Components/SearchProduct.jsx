@@ -6,7 +6,6 @@ const SearchProduct = () => {
     const {showSearch,setShowSearch}= useStoreContext()
 
     const {searchInput,setSearchInput}= useStoreContext()
-    console.log("searchInput in searchProduct is", searchInput)
   return (
     <div>
     {
