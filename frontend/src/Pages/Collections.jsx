@@ -1,7 +1,7 @@
 import React from "react";
 import { useStoreContext } from "../Context/StoreContext";
 import { useState, useEffect } from "react";
-import SearchProduct from "../Components/searchProduct";
+import SearchProduct from "../Components/SearchProduct";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { assets } from "../assets/frontend_assets/assets";
 
@@ -104,7 +104,7 @@ const Collections = () => {
       <div className="flex flex-col  justify-between items-center gap-10 w-full">
         {location.pathname === "/collections" && showSearch && (
           <div className="w-60 sm:w-72 md:w-80 lg:w-96">
-            <SearchProduct />
+            <SearchProduct/>
           </div>
         )}
         <div className="flex flex-col sm:flex-row justify-between gap-10 w-full h-screen">
