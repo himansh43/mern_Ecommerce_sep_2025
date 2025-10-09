@@ -3,6 +3,7 @@ import { useState } from "react";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import {toast} from 'react-toastify'
+import { useStoreContext } from "../Context/StoreContext";
 
 const Login = ({token,setToken}) => {
     const [showPassword,setShowPassword]= useState(false)
@@ -10,6 +11,7 @@ const Login = ({token,setToken}) => {
         email:"",
         password:""
     })
+    const {backend_url}= useStoreContext()
 
     const handleInputs=(e)=>{
         const value= e.target.value
@@ -20,7 +22,7 @@ const Login = ({token,setToken}) => {
     const handleSubmit=async(e)=>{
         e.preventDefault()
         try {
-        const url=`http://localhost:3000/api/v1/ecommerce/users/adminLogin`
+        const url=`${backend_url}/api/v1/ecommerce/users/adminLogin`
         const options= {
             method:"POST",
             headers:{

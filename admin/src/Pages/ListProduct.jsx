@@ -2,11 +2,13 @@ import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import {toast} from 'react-toastify'
+import { useStoreContext } from '../Context/StoreContext'
 
 const ListProduct = () => {
     const [products,setProducts]= useState([])
+    const {backend_url}= useStoreContext()
     const fetchAllProducts=async()=>{
-        const url=`http://localhost:3000/api/v1/ecommerce/products/allProducts`
+        const url=`${backend_url}/api/v1/ecommerce/products/allProducts`
         const options={
             method:"GET",
             headers:{
@@ -23,7 +25,7 @@ const ListProduct = () => {
     console.log("products are",products)
 
     const handleDeleteProduct=async(id)=>{
-        const url=`http://localhost:3000/api/v1/ecommerce/products/delete/${id}`
+        const url=`${backend_url}/api/v1/ecommerce/products/delete/${id}`
         const options={
             method:"DELETE",
             headers:{

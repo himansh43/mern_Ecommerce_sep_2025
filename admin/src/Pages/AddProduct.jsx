@@ -2,6 +2,7 @@ import {assets} from '../assets/assets'
 import { useState } from 'react'
 import axios from 'axios';
 import {toast} from 'react-toastify'
+import { useStoreContext } from '../Context/StoreContext';
 
 
 const AddProduct = () => {
@@ -16,6 +17,7 @@ const AddProduct = () => {
     const [bestSeller,setBestSeller]= useState(false)
     const [category,setCategory]= useState("Men")
     const [subCategory,setSubCategory]= useState("TopWear")
+    const {backend_url}= useStoreContext()
     
 
 
@@ -35,17 +37,8 @@ const AddProduct = () => {
         image3 && formData.append("image3", image3)
         image4 && formData.append("image4", image4)
 
-        const url=`http://localhost:3000/api/v1/ecommerce/products/add`
-        // const options={
-        //     method:"POST",
-
-        //     body:formData
-        // }
-        // const response= await fetch(url,options)
-        // const data = await response.json()
-        // console.log(data)
+        const url=`${backend_url}/api/v1/ecommerce/products/add`
         const response= await axios.post(url,formData)
-        console.log(response.data)
         const {success,message}= response.data
         if(success===true){
             toast.success(message)
@@ -69,8 +62,6 @@ const AddProduct = () => {
         }
 
     }
-    console.log("inputs are", name,description,price,category,subCategory,bestSeller,sizes)
-    console.log("sizes are", sizes)
   return (
     <div className='w-full sm:w-[90%] md:w-[80%] lg:w-[50%]'>
         <form className="flex flex-col gap-5" onSubmit={handleSubmit}>

@@ -2,11 +2,13 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { assets } from "../assets/assets";
+import { useStoreContext } from "../Context/StoreContext";
 
 const Orders = ({ token }) => {
   const [allOrders, setAllOrders] = useState([]);
+  const {backend_url}= useStoreContext()
   const allOrdersForAdmin = async () => {
-    const url = `http://localhost:3000/api/v1/ecommerce/orders/allOrders`;
+    const url = `${backend_url}/api/v1/ecommerce/orders/allOrders`;
     const options = {
       method: "GET",
       headers: {
@@ -16,20 +18,17 @@ const Orders = ({ token }) => {
     };
     const response = await fetch(url, options);
     const data = await response.json();
-    setAllOrders(data.orders.reverse());
+    
     const { success, message } = data;
     if (success) {
-      toast.success(message);
+      setAllOrders(data.orders.reverse());
     }
-    console.log("All admin orders are", data.orders);
   };
 
   const handleStatus = async (e, orderId) => {
-    console.log("orderId is", orderId)
     try {
       const status = e.target.value;
-      console.log("status and orderId is", status, orderId);
-      const url = `http://localhost:3000/api/v1/ecommerce/orders/updateOrderStatus`;
+      const url = `${backend_url}/api/v1/ecommerce/orders/updateOrderStatus`;
       const options = {
         method: "PUT",
         headers: {
@@ -40,10 +39,8 @@ const Orders = ({ token }) => {
       };
       const response = await fetch(url, options);
       const data = await response.json();
-      console.log("data is", data);
       const { success, message } = data;
       if (success) {
-        toast.success(message);
         allOrdersForAdmin();
       }
     } catch (error) {
